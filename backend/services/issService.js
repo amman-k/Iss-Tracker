@@ -6,11 +6,14 @@ const ISS_API_URL = "https://api.wheretheiss.at/v1/satellites/25544";
 export const fetchIssLocationAndSave = async (io) => {
   try {
     const response = await axios.get(ISS_API_URL);
-    const { latitude, longitude } = response.data;
+
+    const { latitude, longitude, altitude, velocity } = response.data;
 
     const newPosition = new IssPosition({
       latitude,
       longitude,
+      altitude,
+      velocity,
     });
 
     await newPosition.save();
@@ -18,6 +21,8 @@ export const fetchIssLocationAndSave = async (io) => {
     const locationData = {
       lat: latitude,
       lng: longitude,
+      alt: altitude,
+      vel: velocity,
       timestamp: newPosition.timestamp,
     };
     io.emit("iss-location-update", locationData);
