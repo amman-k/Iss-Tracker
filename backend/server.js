@@ -5,6 +5,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import { fetchIssLocationAndSave } from "./services/issService.js";
+import issRoutes from "./routes/issRoutes.js";
 
 dotenv.config();
 
@@ -36,6 +37,8 @@ const PORT = process.env.PORT || 5001;
 app.get("/", (req, res) => {
   res.send("ISS Tracker Backend is running!");
 });
+
+app.use("/api", issRoutes);
 
 server.listen(PORT, () => {
   console.log(`Server is live on http://localhost:${PORT}`);
