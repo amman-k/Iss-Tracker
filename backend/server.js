@@ -28,18 +28,21 @@ io.on("connection", (socket) => {
   });
 });
 
-const FETCH_INTERVAL = 5000;
-setInterval(fetchIssLocationAndSave, FETCH_INTERVAL);
 app.use(cors());
+app.use(express.json());
 
-const PORT = process.env.PORT || 5001;
+app.use("/api", issRoutes);
 
 app.get("/", (req, res) => {
   res.send("ISS Tracker Backend is running!");
 });
 
-app.use("/api", issRoutes);
-
+const PORT = process.env.PORT || 4000;
 server.listen(PORT, () => {
   console.log(`Server is live on http://localhost:${PORT}`);
+
+  const FETCH_INTERVAL = 5000;
+  setInterval(() => {
+    fetchIssLocationAndSave(io);
+  }, FETCH_INTERVAL);
 });
