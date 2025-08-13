@@ -4,10 +4,14 @@ import { Server } from "socket.io";
 import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
+import { fetchIssLocationAndSave } from "./services/issService.js";
 
 dotenv.config();
 
 connectDB();
+
+const FETCH_INTERVAL=5000;
+setInterval(fetchIssLocationAndSave,FETCH_INTERVAL);
 
 const app = express();
 const server = http.createServer(app);
