@@ -1,5 +1,5 @@
 import axios from "axios";
-import IssPosition from "../models/IssPosition";
+import IssPosition from "../models/IssPosition.js";
 
 const ISS_API_URL = "https://api.wheretheiss.at/v1/satellites/25544";
 
