@@ -25,12 +25,7 @@ function Header() {
             <Link to="/live" className="text-white font-bold">
               Live Track
             </Link>
-            <a
-              href="#"
-              className="text-gray-300 hover:text-white transition-colors"
-            >
-              About ISS
-            </a>
+            <Link to="/about" className="text-white font-bold">About ISS</Link>
             <a
               href="#"
               className="text-gray-300 hover:text-white transition-colors"
@@ -72,13 +67,7 @@ function Header() {
           >
             Live Track
           </Link>
-          <a
-            href="#"
-            onClick={() => setIsMenuOpen(false)}
-            className="text-gray-300 hover:text-white"
-          >
-            About ISS
-          </a>
+          <Link to="/about" className="text-white font-bold">About ISS</Link>
           <a
             href="#"
             onClick={() => setIsMenuOpen(false)}
