@@ -2,7 +2,6 @@ import React, { useMemo, useRef, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Stars, Line } from "@react-three/drei";
 import * as THREE from "three";
-
 import { useIssStore } from "../store/issStore.js";
 import Earth from "./Earth.jsx";
 import ISS from "./Iss.jsx";
