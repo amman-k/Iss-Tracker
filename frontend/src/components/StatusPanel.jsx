@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaSatellite } from 'react-icons/fa6';
+import { GoDotFill } from "react-icons/go";
 
 function StatusPanel({ issData, isLoading }) {
   if (isLoading) {
@@ -12,7 +13,7 @@ function StatusPanel({ issData, isLoading }) {
   }
 
   return (
-    <div className="absolute bottom-4 left-4 z-10 p-4 bg-gray-800 bg-opacity-70 rounded-lg shadow-lg text-white w-64 font-sans">
+    <div className="absolute bottom-4 left-4 z-10 p-4 bg-gray-800 bg-opacity-70 rounded-2xl shadow-lg text-white w-64 font-sans">
       <h2 className="text-lg font-bold mb-2">ISS Status</h2>
       <div className="space-y-1 text-sm">
         <p>Latitude: <span className="font-mono float-right">{issData.lat.toFixed(4)}°</span></p>
@@ -23,6 +24,7 @@ function StatusPanel({ issData, isLoading }) {
       <div className="flex items-center mt-3 pt-2 border-t border-gray-600">
         <FaSatellite className="text-green-400" />
         <p className="text-xs text-green-400 ml-2">Live Tracking</p>
+        <GoDotFill className='text-green-400'/>
       </div>
     </div>
   );
