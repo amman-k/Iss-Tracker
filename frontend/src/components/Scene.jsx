@@ -4,7 +4,7 @@ import { OrbitControls, Stars, Line } from "@react-three/drei";
 import * as THREE from "three";
 import { useIssStore } from "../store/issStore.js";
 import Earth from "./Earth.jsx";
-import ISS from "./Iss.jsx";
+import ISS from "./ISS.jsx";
 
 const latLonToVector3 = (lat, lon, radius) => {
   const phi = (90 - lat) * (Math.PI / 180);
@@ -16,7 +16,7 @@ const latLonToVector3 = (lat, lon, radius) => {
 };
 
 function SceneContent() {
-  const { issData, pathPoints, isLoading } = useIssStore();
+  const { issData, pathPoints } = useIssStore();
   const groupRef = useRef();
   const controlsRef = useRef();
   const [isRotating, setIsRotating] = useState(true);

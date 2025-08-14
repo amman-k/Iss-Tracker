@@ -5,7 +5,6 @@ import * as THREE from 'three';
 
 
 const dayTextureUrl = 'https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg';
-const nightTextureUrl = 'https://unpkg.com/three-globe/example/img/earth-night.jpg';
 
 const EARTH_RADIUS = 5;
 
