@@ -4,13 +4,13 @@ import Header from "../components/Header.jsx";
 
 function AboutPage() {
   return (
-    <div className="min-h-screen bg-gray-900 text-white font-sans">
+    <div className="min-h-screen bg-black text-white font-sans">
       <Header />
       <main className="container mx-auto px-4 py-24 md:py-32">
         <div className="max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold text-center mb-12">
             The{" "}
-            <span className="text-blue-400">International Space Station</span>
+            <span className="text-[#03FFFF]">International Space Station</span>
           </h1>
 
           <img
@@ -76,20 +76,20 @@ function AboutPage() {
             </h2>
             <ul className="list-none space-y-4 text-lg">
               <li className="flex items-start">
-                <span className="text-blue-400 mr-3">★</span>The ISS is the
+                <span className="text-[#03FFFF] mr-3">★</span>The ISS is the
                 third brightest object in the night sky and can often be spotted
                 from Earth with the naked eye.
               </li>
               <li className="flex items-start">
-                <span className="text-blue-400 mr-3">★</span>Over 260 astronauts
+                <span className="text-[#03FFFF] mr-3">★</span>Over 260 astronauts
                 from more than 20 countries have visited.
               </li>
               <li className="flex items-start">
-                <span className="text-blue-400 mr-3">★</span>It has traveled
+                <span className="text-[#03FFFF] mr-3">★</span>It has traveled
                 over 4 billion kilometers since launch.
               </li>
               <li className="flex items-start">
-                <span className="text-blue-400 mr-3">★</span>Meals are specially
+                <span className="text-[#03FFFF] mr-3">★</span>Meals are specially
                 prepared, and condiments like mustard and ketchup are stored in
                 squeeze tubes to work in zero gravity.
               </li>
