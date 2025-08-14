@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { Link } from "react-router-dom";
-import { BsRocketTakeoffFill } from "react-icons/bs";
+import { FaRocket } from "react-icons/fa";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,7 +11,7 @@ function Header() {
       <header className="absolute top-0 left-0 right-0 z-30 p-4">
         <div className="container mx-auto flex justify-between items-center">
           <Link to="/" className="flex items-center space-x-2">
-            <BsRocketTakeoffFill className="text-white text-2xl" />
+            <FaRocket className="text-white text-2xl" />
             <span className="text-white font-bold text-xl">ISS Tracker</span>
           </Link>
 
@@ -38,13 +38,6 @@ function Header() {
               Contact
             </a>
           </nav>
-
-          <Link
-            to="/live"
-            className="hidden md:block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-colors"
-          >
-            Start Tracking
-          </Link>
 
           <div className="md:hidden">
             <button onClick={() => setIsMenuOpen(true)}>
