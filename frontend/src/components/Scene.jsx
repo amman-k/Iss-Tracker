@@ -1,14 +1,12 @@
-import React, { useMemo, useRef, useState, useEffect } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Stars, Line } from '@react-three/drei';
-import * as THREE from 'three';
-// Corrected the import paths to be relative and include file extensions.
-import { useIssStore } from '../store/issStore.js';
-import Earth from './Earth.jsx';
-import ISS from './Iss.jsx';
+import React, { useMemo, useRef, useState, useEffect } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { OrbitControls, Stars, Line } from "@react-three/drei";
+import * as THREE from "three";
 
+import { useIssStore } from "../store/issStore.js";
+import Earth from "./Earth.jsx";
+import ISS from "./Iss.jsx";
 
-// Helper function to convert coordinates
 const latLonToVector3 = (lat, lon, radius) => {
   const phi = (90 - lat) * (Math.PI / 180);
   const theta = (lon + 180) * (Math.PI / 180);
@@ -21,26 +19,25 @@ const latLonToVector3 = (lat, lon, radius) => {
 function SceneContent() {
   const { issData, pathPoints, isLoading } = useIssStore();
   const groupRef = useRef();
-  const controlsRef = useRef(); // <-- Ref for camera controls
+  const controlsRef = useRef();
   const [isRotating, setIsRotating] = useState(true);
-  const [scale, setScale] = useState(1); // State for responsive scaling
+  const [scale, setScale] = useState(1);
 
-  // Effect to adjust scale based on screen size
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
       if (width < 768) {
-        setScale(0.5); // Smaller scale for mobile devices
+        setScale(0.5);
       } else if (width >= 768 && width <= 1024) {
-        setScale(0.7); // Intermediate scale for tablets
+        setScale(0.7);
       } else {
-        setScale(1); // Default scale for larger screens
+        setScale(1);
       }
     };
 
-    handleResize(); // Set initial scale
-    window.addEventListener('resize', handleResize); // Adjust on resize
-    return () => window.removeEventListener('resize', handleResize); // Cleanup
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useFrame(({ clock }) => {
@@ -50,14 +47,13 @@ function SceneContent() {
   });
 
   const issPosition = useMemo(() => {
-    return latLonToVector3(issData.lat, issData.lng, 5.2); 
+    return latLonToVector3(issData.lat, issData.lng, 5.2);
   }, [issData]);
 
-  // Function to handle focusing on the ISS
   const handleFocusISS = () => {
     if (controlsRef.current) {
-      setIsRotating(false); // Stop auto-rotation
-      // Smoothly move the camera's target to the ISS position
+      setIsRotating(false);
+
       controlsRef.current.setLookAt(
         controlsRef.current.object.position.x,
         controlsRef.current.object.position.y,
@@ -65,7 +61,7 @@ function SceneContent() {
         issPosition.x,
         issPosition.y,
         issPosition.z,
-        true // Enable smooth transition
+        true
       );
     }
   };
@@ -74,25 +70,36 @@ function SceneContent() {
     <>
       <ambientLight intensity={0.5} />
       <directionalLight position={[10, 10, 5]} intensity={2.5} />
-      <Stars radius={200} depth={50} count={5000} factor={4} saturation={0} fade />
-      
-      <group ref={groupRef} scale={scale}> {/* Apply responsive scale here */}
+      <Stars
+        radius={200}
+        depth={50}
+        count={5000}
+        factor={4}
+        saturation={0}
+        fade
+      />
+
+      <group ref={groupRef} scale={scale}>
         <Earth />
         <ISS position={issPosition} onFocus={handleFocusISS} />
-        
+
         {pathPoints.length > 1 && (
-          <Line points={pathPoints.map(p => p.clone().setLength(5.2))} color="yellow" lineWidth={2} />
+          <Line
+            points={pathPoints.map((p) => p.clone().setLength(5.2))}
+            color="yellow"
+            lineWidth={2}
+          />
         )}
       </group>
 
-      <OrbitControls 
-        ref={controlsRef} // <-- Attach the ref
+      <OrbitControls
+        ref={controlsRef}
         onStart={() => setIsRotating(false)}
-        enablePan={true} 
-        enableZoom={true} 
-        enableRotate={true} 
-        minDistance={1} 
-        maxDistance={20} 
+        enablePan={true}
+        enableZoom={true}
+        enableRotate={true}
+        minDistance={1}
+        maxDistance={20}
       />
     </>
   );
