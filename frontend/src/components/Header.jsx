@@ -1,27 +1,101 @@
-import React from 'react';
-import { FaRocket } from 'react-icons/fa';
+import React, { useState } from "react";
+import { FiMenu, FiX } from "react-icons/fi";
+import { Link } from "react-router-dom";
+import { BsRocketTakeoffFill } from "react-icons/bs";
 
 function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
-    <header className="absolute top-0 left-0 right-0 z-20 p-4">
-      <div className="container mx-auto flex justify-between items-center">
-        <div className="flex items-center space-x-2">
-          <FaRocket className="text-white text-2xl" />
-          <span className="text-white font-bold text-xl">ISS Tracker</span>
+    <>
+      <header className="absolute top-0 left-0 right-0 z-30 p-4">
+        <div className="container mx-auto flex justify-between items-center">
+          <Link to="/" className="flex items-center space-x-2">
+            <BsRocketTakeoffFill className="text-white text-2xl" />
+            <span className="text-white font-bold text-xl">ISS Tracker</span>
+          </Link>
+
+          <nav className="hidden md:flex space-x-8 items-center">
+            <Link
+              to="/"
+              className="text-gray-300 hover:text-white transition-colors"
+            >
+              Home
+            </Link>
+            <Link to="/live" className="text-white font-bold">
+              Live Track
+            </Link>
+            <a
+              href="#"
+              className="text-gray-300 hover:text-white transition-colors"
+            >
+              About ISS
+            </a>
+            <a
+              href="#"
+              className="text-gray-300 hover:text-white transition-colors"
+            >
+              Contact
+            </a>
+          </nav>
+
+          <Link
+            to="/live"
+            className="hidden md:block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-colors"
+          >
+            Start Tracking
+          </Link>
+
+          <div className="md:hidden">
+            <button onClick={() => setIsMenuOpen(true)}>
+              <FiMenu className="text-white text-2xl" />
+            </button>
+          </div>
         </div>
+      </header>
 
-        <nav className="hidden md:flex space-x-8">
-          <a href="#" className="text-gray-300 hover:text-white transition-colors">Home</a>
-          <a href="#" className="text-white font-bold">Live Track</a>
-          <a href="#" className="text-gray-300 hover:text-white transition-colors">About ISS</a>
-          <a href="#" className="text-gray-300 hover:text-white transition-colors">Contact</a>
+      <div
+        className={`fixed inset-0 bg-gray-900 bg-opacity-95 z-50 transform ${
+          isMenuOpen ? "translate-x-0" : "translate-x-full"
+        } transition-transform duration-300 ease-in-out md:hidden`}
+      >
+        <div className="flex justify-end p-4">
+          <button onClick={() => setIsMenuOpen(false)}>
+            <FiX className="text-white text-3xl" />
+          </button>
+        </div>
+        <nav className="flex flex-col items-center justify-center h-full space-y-8 text-2xl">
+          <Link
+            to="/"
+            onClick={() => setIsMenuOpen(false)}
+            className="text-gray-300 hover:text-white"
+          >
+            Home
+          </Link>
+          <Link
+            to="/live"
+            onClick={() => setIsMenuOpen(false)}
+            className="text-white font-bold"
+          >
+            Live Track
+          </Link>
+          <a
+            href="#"
+            onClick={() => setIsMenuOpen(false)}
+            className="text-gray-300 hover:text-white"
+          >
+            About ISS
+          </a>
+          <a
+            href="#"
+            onClick={() => setIsMenuOpen(false)}
+            className="text-gray-300 hover:text-white"
+          >
+            Contact
+          </a>
         </nav>
-
-        <button className="hidden md:block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-colors">
-          Get Started
-        </button>
       </div>
-    </header>
+    </>
   );
 }
 
