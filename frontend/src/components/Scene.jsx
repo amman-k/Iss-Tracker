@@ -97,7 +97,7 @@ function SceneContent() {
         enablePan={true}
         enableZoom={true}
         enableRotate={true}
-        minDistance={1}
+        minDistance={6}
         maxDistance={20}
       />
     </>
