@@ -13,14 +13,14 @@ function AboutPage() {
           </h1>
           <p className="text-xl md:text-2xl text-gray-400 max-w-4xl mx-auto">
             A beacon of collaboration and scientific discovery, orbiting our
-            planet at 17,500 mph.
+            planet at 28,000 km/h.
           </p>
         </section>
 
         {/* Hero Image */}
         <section className="mb-24">
           <img
-            src="https://www.nasa.gov/wp-content/uploads/2025/08/iss073e0420899orig.jpg"
+            src="https://images-assets.nasa.gov/image/9802667/9802667~orig.jpg"
             alt="The International Space Station"
             className="rounded-2xl shadow-2xl w-full"
           />
@@ -45,6 +45,28 @@ function AboutPage() {
               Traveling at a speed of 28,000 kilometers per hour (17,500 mph),
               the ISS completes an orbit of Earth every 90 minutes. This means
               the crew onboard experiences 16 sunrises and sunsets every day.
+            </p>
+          </div>
+        </section>
+
+        {/* Construction and Assembly */}
+        <section className="max-w-4xl mx-auto mb-24">
+          <h2 className="text-4xl font-bold text-center mb-8 text-[#03FFFF]">
+            Construction and Assembly
+          </h2>
+          <div className="text-lg text-gray-300 leading-relaxed space-y-6">
+            <p>
+              The ISS is one of the most ambitious engineering projects ever
+              undertaken. Its construction began in 1998 and involved over 30
+              missions using space shuttles and Russian rockets. Modules,
+              trusses, solar arrays, and other components were assembled piece
+              by piece in orbit, requiring precise coordination and international
+              cooperation.
+            </p>
+            <p>
+              The station spans the size of a football field and weighs over
+              420,000 kilograms. Its modular design allows for expansions,
+              upgrades, and the addition of new laboratories and systems.
             </p>
           </div>
         </section>
@@ -116,6 +138,38 @@ function AboutPage() {
               possible on Earth. Research on the ISS has led to advancements
               in medicine, materials science, and our understanding of the
               universe.
+            </p>
+          </div>
+        </section>
+
+        {/* International Collaboration */}
+        <section className="max-w-4xl mx-auto mb-24">
+          <h2 className="text-4xl font-bold text-center mb-8 text-[#03FFFF]">
+            International Collaboration
+          </h2>
+          <div className="text-lg text-gray-300 leading-relaxed space-y-6">
+            <p>
+              The ISS is a global partnership among five space agencies:
+              NASA (United States), Roscosmos (Russia), ESA (Europe), JAXA
+              (Japan), and CSA (Canada). Over 15 nations have contributed to
+              its development and operations. This cooperation demonstrates how
+              science and exploration can unite humanity beyond borders.
+            </p>
+          </div>
+        </section>
+
+        {/* Future of the ISS */}
+        <section className="max-w-4xl mx-auto mb-24">
+          <h2 className="text-4xl font-bold text-center mb-8 text-[#03FFFF]">
+            The Future of the ISS
+          </h2>
+          <div className="text-lg text-gray-300 leading-relaxed space-y-6">
+            <p>
+              The ISS is expected to remain operational until at least 2030.
+              Plans are underway for commercial space stations to eventually
+              succeed it, allowing low Earth orbit to become a hub for private
+              research, manufacturing, and tourism. The legacy of the ISS will
+              guide future missions to the Moon, Mars, and beyond.
             </p>
           </div>
         </section>
