@@ -1,25 +1,56 @@
-import React, { useMemo } from "react";
-import { useLoader } from "@react-three/fiber";
-import { TextureLoader } from "three";
-import * as THREE from "three";
+import React from 'react';
+import { useLoader } from '@react-three/fiber';
+import { TextureLoader } from 'three';
+import * as THREE from 'three';
 
-const EARTH_TEXTURE_URL =
-  "https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg";
+
+const dayTextureUrl = 'https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg';
+const nightTextureUrl = 'https://unpkg.com/three-globe/example/img/earth-night.jpg';
 
 const EARTH_RADIUS = 5;
 
-function Earth() {
-  const texture = useLoader(TextureLoader, EARTH_TEXTURE_URL);
 
-  const geometry = useMemo(
-    () => new THREE.SphereGeometry(EARTH_RADIUS, 64, 64),
-    []
-  );
+const vertexShader = `
+  varying vec3 vNormal;
+  void main() {
+    vNormal = normalize(normalMatrix * normal);
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+  }
+`;
+
+const fragmentShader = `
+  varying vec3 vNormal;
+  void main() {
+    float intensity = pow(0.7 - dot(vNormal, vec3(0, 0, 1.0)), 2.0);
+    gl_FragColor = vec4(0.3, 0.6, 1.0, 1.0) * intensity;
+  }
+`;
+
+function Earth() {
+  const [dayMap] = useLoader(TextureLoader, [dayTextureUrl]);
 
   return (
-    <mesh geometry={geometry}>
-      <meshStandardMaterial map={texture} metalness={0.2} roughness={0.7} />
-    </mesh>
+    <>
+      {/* The main Earth sphere */}
+      <mesh>
+        <sphereGeometry args={[EARTH_RADIUS, 64, 64]} />
+        <meshPhongMaterial
+          map={dayMap}
+          shininess={10}
+        />
+      </mesh>
+      
+      {/* The atmospheric glow */}
+      <mesh scale={[1.04, 1.04, 1.04]}>
+        <sphereGeometry args={[EARTH_RADIUS, 64, 64]} />
+        <shaderMaterial
+          vertexShader={vertexShader}
+          fragmentShader={fragmentShader}
+          blending={THREE.AdditiveBlending}
+          side={THREE.BackSide}
+        />
+      </mesh>
+    </>
   );
 }
 
