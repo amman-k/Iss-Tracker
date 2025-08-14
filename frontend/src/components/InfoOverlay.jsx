@@ -8,6 +8,9 @@ function InfoOverlay() {
     const handleStartTracking=()=>{
         navigate('/live');
     }
+    const handleLearnMore=()=>{
+      navigate('/about');
+    }
   return (
 
    <div className="absolute inset-0 z-10 flex flex-col justify-center items-center text-center p-4 pointer-events-none">
@@ -29,7 +32,7 @@ function InfoOverlay() {
             >
                 Start Tracking
             </button>
-            <button className="bg-transparent border border-gray-500 hover:bg-gray-800 hover:border-gray-400 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+            <button onClick={handleLearnMore} className="bg-transparent border border-gray-500 hover:bg-gray-800 hover:border-gray-400 text-white font-bold py-3 px-6 rounded-lg transition-colors">
                 Learn More
             </button>
         </div>
