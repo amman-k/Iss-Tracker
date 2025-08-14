@@ -70,12 +70,12 @@ function SceneContent() {
       <ambientLight intensity={0.7} />
       <directionalLight position={[10, 10, 5]} intensity={2.5} />
       <Stars
-        radius={200}
+        radius={100}
         depth={50}
         count={5000}
-        factor={4}
+        factor={6}
         saturation={0}
-        fade
+        
       />
 
       <group ref={groupRef} scale={scale}>
