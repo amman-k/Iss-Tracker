@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
-import Scene from "../components/Scene.jsx";
-import StatusPanel from "../components/StatusPanel.jsx";
-import { useIssStore } from "../store/issStore.js";
-import Header from "../components/Header.jsx";
+import React, { useEffect } from 'react';
+import Scene from '/src/components/Scene.jsx';
+import StatusPanel from '/src/components/StatusPanel.jsx';
+import Header from '/src/components/Header.jsx';
+import LoadingScreen from '/src/components/LoadingScreen.jsx';
+import { useIssStore } from '/src/store/issStore.js';
 
 function LiveTrackerPage() {
   const { issData, isLoading, initialize, disconnect } = useIssStore();
@@ -13,10 +14,12 @@ function LiveTrackerPage() {
   }, [initialize, disconnect]);
 
   return (
-    <div className="relative w-screen h-screen bg-black">
+    <div className="relative w-screen h-screen bg-black text-white">
+      <LoadingScreen isLoading={isLoading} />
       <Header />
       <StatusPanel issData={issData} isLoading={isLoading} />
-      <div className="absolute inset-0 z-0">
+      
+      <div className={`absolute inset-0 z-0 transition-opacity duration-1000 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
         <Scene />
       </div>
     </div>
