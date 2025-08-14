@@ -22,10 +22,18 @@ function Header() {
             >
               Home
             </Link>
-            <Link to="/live" className="text-white font-bold">
+            <Link
+              to="/live"
+              className="text-gray-300 hover:text-white transition-colors "
+            >
               Live Track
             </Link>
-            <Link to="/about" className="text-white font-bold">About ISS</Link>
+            <Link
+              to="/about"
+              className="text-gray-300 hover:text-white transition-colors "
+            >
+              About ISS
+            </Link>
             <a
               href="#"
               className="text-gray-300 hover:text-white transition-colors"
@@ -67,7 +75,9 @@ function Header() {
           >
             Live Track
           </Link>
-          <Link to="/about" className="text-white font-bold">About ISS</Link>
+          <Link to="/about" className="text-white font-bold">
+            About ISS
+          </Link>
           <a
             href="#"
             onClick={() => setIsMenuOpen(false)}
