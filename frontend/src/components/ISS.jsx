@@ -1,12 +1,30 @@
-import React from 'react'
+import React, { useRef } from 'react';
+import { useGLTF } from '@react-three/drei';
+import { useFrame } from '@react-three/fiber';
 
-const Iss = ({position}) => {
-   return (
-    <mesh position={position}>
-      <sphereGeometry args={[0.05, 32, 32]} />
-      <meshStandardMaterial color="red" emissive="red" emissiveIntensity={2} />
-    </mesh>
+function ISS({ position }) {
+  
+  const { scene } = useGLTF('/iss.glb'); 
+  const issRef = useRef();
+
+ 
+  useFrame(() => {
+    if (issRef.current) {
+      issRef.current.lookAt(0, 0, 0);
+    }
+  });
+
+  return (
+    <primitive
+      ref={issRef}
+      object={scene}
+      position={position}
+      scale={0.0615} 
+    />
   );
 }
 
-export default Iss
+
+useGLTF.preload('/iss.glb');
+
+export default ISS;
