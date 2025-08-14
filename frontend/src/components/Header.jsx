@@ -51,7 +51,7 @@ function Header() {
       </header>
 
       <div
-        className={`fixed inset-0 bg-gray-900 bg-opacity-95 z-50 transform ${
+        className={`fixed inset-0 bg-black bg-opacity-95 z-50 transform ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-300 ease-in-out md:hidden`}
       >
@@ -64,24 +64,24 @@ function Header() {
           <Link
             to="/"
             onClick={() => setIsMenuOpen(false)}
-            className="text-gray-300 hover:text-white"
+            className="text-gray-300 hover:text-white transition-colors"
           >
             Home
           </Link>
           <Link
             to="/live"
             onClick={() => setIsMenuOpen(false)}
-            className="text-white font-bold"
+            className="text-gray-300 hover:text-white transition-colors"
           >
             Live Track
           </Link>
-          <Link to="/about" className="text-white font-bold">
+          <Link to="/about" className="text-gray-300 hover:text-white transition-colors">
             About ISS
           </Link>
           <a
             href="#"
             onClick={() => setIsMenuOpen(false)}
-            className="text-gray-300 hover:text-white"
+            className="text-gray-300 hover:text-white transition-colors"
           >
             Contact
           </a>
