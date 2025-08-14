@@ -4,7 +4,8 @@ import { OrbitControls, Stars, Line } from "@react-three/drei";
 import * as THREE from "three";
 import { useIssStore } from "../store/issStore.js";
 import Earth from "./Earth.jsx";
-import ISS from "./ISS.jsx";
+import ISS from "./ISS.jsx"
+
 
 const latLonToVector3 = (lat, lon, radius) => {
   const phi = (90 - lat) * (Math.PI / 180);
