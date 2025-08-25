@@ -35,10 +35,10 @@ function Header() {
               About ISS
             </Link>
             <a
-              href="#"
+              href="/model"
               className="text-gray-300 hover:text-white transition-colors"
             >
-              Contact
+              Model
             </a>
           </nav>
 
