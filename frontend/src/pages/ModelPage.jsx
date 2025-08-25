@@ -105,7 +105,6 @@ const ModelPage = () => {
             allow="autoplay; fullscreen; xr-spatial-tracking"
             allowFullScreen
             loading="lazy"
-            frameBorder="0"
             className="absolute top-0 left-0 w-full h-full rounded-lg border border-gray-700 shadow-lg"
           ></iframe>
         </div>
@@ -168,8 +167,8 @@ const ModelPage = () => {
           {componentsData.map(({ component, country, description }) => (
             <div
               key={component}
-              className="flex-shrink-0 w-72 bg-gray-900 rounded-lg p-6 shadow-md border border-gray-700 snap-center 
-                         hover:scale-105 hover:border-cyan-400 transition-transform duration-300"
+              className="flex-shrink-0 w-72 bg-gray-900 rounded-4xl p-6 shadow-md border border-gray-700 snap-center 
+                         hover:scale-100 hover:border-cyan-400 transition-transform duration-300"
             >
               <h3
                 className="text-lg font-semibold text-blue-400"
