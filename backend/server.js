@@ -41,7 +41,7 @@ const PORT = process.env.PORT || 4000;
 server.listen(PORT, () => {
   console.log(`Server is live on http://localhost:${PORT}`);
 
-  const FETCH_INTERVAL = 5000;
+  const FETCH_INTERVAL = 1000;
   setInterval(() => {
     fetchIssLocationAndSave(io);
   }, FETCH_INTERVAL);
